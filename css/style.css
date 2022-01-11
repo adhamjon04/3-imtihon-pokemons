@@ -203,6 +203,6 @@ body {
     margin-left: 50px;
 }
 
-.red__btn.path {
-    fill: red;
+.red__btn {
+    background: red;
 }

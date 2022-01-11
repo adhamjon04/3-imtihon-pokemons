@@ -3,20 +3,37 @@ var elBtn = document.querySelector('.button');
 var elSelect = document.querySelector('.selects');
 var elHeart = document.querySelector('.heart');
 var elClicklog = document.querySelector('.btn');
+var elInputlog = document.querySelector('.input');
+var elSelecttext = document.querySelector('.selects__text')
 
 
 
 elBtn.addEventListener('click', function(evt) {
 
     evt.preventDefault();
+    if (evt.target = true) {
+        elHeart.classList.toggle('red__btn');
+    } else {
 
-    elHeart.classList.add('red__btn');
+        elHeart.classList.toggle('heart');
+
+    }
+
+
 })
 elClicklog.addEventListener('click', function(evt) {
 
     evt.preventDefault();
 
-    console.log(elSelectlog.value);
+    if (evt.target = true) {
+        hrImg.classList.toggle('red__btn')
+    } else {
+        hrImg.classList.toggle('btn')
+    }
+
+
+
+    console.log(elSelect.value);
     console.log(elInputlog.value);
     console.log(elSelecttext.value);
 
@@ -29,6 +46,37 @@ function elementCreater(tagName) {
 
 }
 
+
+var elArray = [];
+
+for (var i = 0; i < pokemons.length; i++) {
+
+
+    for (var j = 0; j < pokemons[i].type.length; j++) {
+
+        elArray.push(pokemons[i].type[j])
+
+    }
+
+}
+nonUnique = elArray.filter((item, i) => elArray.includes(item, i + 1))
+
+nonUnique = [...new Set(nonUnique)]
+for (var i = 0; i < nonUnique.length; i++) {
+    // console.log(nonUnique[i]);
+};
+
+
+function createOption(nonUnique) {
+
+    var elOption = elementCreater('option');
+    elSelect.appendChild(elOption);
+    elOption.textContent = nonUnique;
+}
+
+
+
+
 function pokemonCreater(pokemon) {
 
     var item = elementCreater('li')
@@ -40,7 +88,7 @@ function pokemonCreater(pokemon) {
     var hrLine = elementCreater('hr');
     var hrBtn = elementCreater('button');
     var hrImg = elementCreater('img')
-    var elOption = elementCreater('option')
+
 
 
 
@@ -51,7 +99,6 @@ function pokemonCreater(pokemon) {
     typeName.textContent = pokemon.type;
     weightSort.textContent = pokemon.weight;
     heigthMetr.textContent = pokemon.height;
-    elOption.textContent = pokemon.type;
     hrImg.src = '../img/heart.svg';
 
 
@@ -68,12 +115,6 @@ function pokemonCreater(pokemon) {
     item.appendChild(heigthMetr);
     item.appendChild(hrBtn);
     hrBtn.appendChild(hrImg);
-    elSelect.appendChild(elOption);
-
-
-
-
-
 
 
 
@@ -94,8 +135,13 @@ function pokemonCreater(pokemon) {
 
 }
 
+
 for (var i = 0; i < pokemons.length; i++) {
 
     pokemonCreater(pokemons[i]);
+
+}
+for (let i = 0; i < nonUnique.length; i++) {
+    createOption(nonUnique[i])
 
 }
