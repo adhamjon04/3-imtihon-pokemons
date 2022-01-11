@@ -99,7 +99,7 @@ function pokemonCreater(pokemon) {
     typeName.textContent = pokemon.type;
     weightSort.textContent = pokemon.weight;
     heigthMetr.textContent = pokemon.height;
-    hrImg.src = './img/heart.svg';
+    hrImg.src = 'img/heart.svg';
 
 
 
